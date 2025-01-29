@@ -1,17 +1,12 @@
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/components/ui/use-toast";
 import { createClient } from "@/lib/supabase";
-import { Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { EmailAuthForm } from "@/components/auth/EmailAuthForm";
+import { SocialAuth } from "@/components/auth/SocialAuth";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -36,8 +31,7 @@ const Login = () => {
     return () => subscription.unsubscribe();
   }, [navigate, supabase.auth]);
 
-  const handleEmailLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleEmailLogin = async (email: string, password: string) => {
     setLoading(true);
     
     try {
@@ -84,8 +78,7 @@ const Login = () => {
     }
   };
 
-  const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSignUp = async (email: string, password: string) => {
     setLoading(true);
     
     try {
@@ -126,74 +119,13 @@ const Login = () => {
           </p>
         </div>
 
-        <form className="mt-8 space-y-6" onSubmit={handleEmailLogin}>
-          <div className="space-y-4">
-            <div>
-              <Label htmlFor="email">Email address</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-          </div>
+        <EmailAuthForm 
+          onSubmit={handleEmailLogin}
+          onSignUp={handleSignUp}
+          loading={loading}
+        />
 
-          <div className="flex gap-4">
-            <Button
-              type="submit"
-              className="flex-1"
-              disabled={loading}
-            >
-              {loading ? "Signing in..." : "Sign in"}
-            </Button>
-            <Button
-              type="button"
-              className="flex-1"
-              variant="secondary"
-              disabled={loading}
-              onClick={handleSignUp}
-            >
-              Sign up
-            </Button>
-          </div>
-        </form>
-
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <Separator className="w-full" />
-          </div>
-          <div className="relative flex justify-center text-sm">
-            <span className="bg-background px-2 text-muted-foreground">
-              Or continue with
-            </span>
-          </div>
-        </div>
-
-        <Button
-          variant="outline"
-          type="button"
-          className="w-full"
-          onClick={handleGoogleLogin}
-        >
-          <Mail className="mr-2 h-4 w-4" />
-          Sign in with Google
-        </Button>
+        <SocialAuth onGoogleLogin={handleGoogleLogin} />
       </Card>
     </div>
   );

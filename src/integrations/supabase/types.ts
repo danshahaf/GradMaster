@@ -9,7 +9,84 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      practice_sessions: {
+        Row: {
+          correct_answers: number | null
+          created_at: string
+          id: string
+          question_type: string
+          total_questions: number | null
+          user_id: string
+        }
+        Insert: {
+          correct_answers?: number | null
+          created_at?: string
+          id?: string
+          question_type: string
+          total_questions?: number | null
+          user_id: string
+        }
+        Update: {
+          correct_answers?: number | null
+          created_at?: string
+          id?: string
+          question_type?: string
+          total_questions?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      questions: {
+        Row: {
+          correct_answer: string
+          created_at: string
+          difficulty: string
+          explanation: string | null
+          id: string
+          question_text: string
+          type: string
+        }
+        Insert: {
+          correct_answer: string
+          created_at?: string
+          difficulty: string
+          explanation?: string | null
+          id?: string
+          question_text: string
+          type: string
+        }
+        Update: {
+          correct_answer?: string
+          created_at?: string
+          difficulty?: string
+          explanation?: string | null
+          id?: string
+          question_text?: string
+          type?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
