@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Icons } from "@/components/ui/icons";
 
 interface SocialAuthProps {
   onGoogleLogin: () => Promise<void>;
