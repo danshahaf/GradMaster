@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/card";
-import { useToast } from "@/components/ui/use-toast";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 import { createClient } from "@/lib/supabase";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +29,7 @@ const Login = () => {
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate, supabase.auth]);
+  }, [navigate]);
 
   const handleEmailLogin = async (email: string, password: string) => {
     setLoading(true);
@@ -109,23 +109,23 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-md space-y-8 p-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight">
-            Sign in to GRE Prep Pro
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Start your 7-day free trial today
-          </p>
-        </div>
-
-        <EmailAuthForm 
-          onSubmit={handleEmailLogin}
-          onSignUp={handleSignUp}
-          loading={loading}
-        />
-
-        <SocialAuth onGoogleLogin={handleGoogleLogin} />
+      <Card className="w-full max-w-md">
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl font-bold text-center">
+            Welcome to GRE Prep Pro
+          </CardTitle>
+          <CardDescription className="text-center">
+            Sign in to start your practice session
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <EmailAuthForm 
+            onSubmit={handleEmailLogin}
+            onSignUp={handleSignUp}
+            loading={loading}
+          />
+          <SocialAuth onGoogleLogin={handleGoogleLogin} />
+        </CardContent>
       </Card>
     </div>
   );

@@ -12,10 +12,15 @@ interface EmailAuthFormProps {
 export const EmailAuthForm = ({ onSubmit, onSignUp, loading }: EmailAuthFormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(email, password);
+    if (isSignUp) {
+      onSignUp(email, password);
+    } else {
+      onSubmit(email, password);
+    }
   };
 
   return (
@@ -31,6 +36,8 @@ export const EmailAuthForm = ({ onSubmit, onSignUp, loading }: EmailAuthFormProp
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="mt-1"
+            placeholder="you@example.com"
           />
         </div>
         <div>
@@ -39,27 +46,31 @@ export const EmailAuthForm = ({ onSubmit, onSignUp, loading }: EmailAuthFormProp
             id="password"
             name="password"
             type="password"
-            autoComplete="current-password"
+            autoComplete={isSignUp ? "new-password" : "current-password"}
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="mt-1"
+            placeholder="••••••••"
           />
         </div>
       </div>
 
-      <div className="flex gap-4">
-        <Button type="submit" className="flex-1" disabled={loading}>
-          {loading ? "Signing in..." : "Sign in"}
+      <div className="flex flex-col gap-4">
+        <Button type="submit" className="w-full" disabled={loading}>
+          {loading ? "Please wait..." : isSignUp ? "Create account" : "Sign in"}
         </Button>
-        <Button
-          type="button"
-          className="flex-1"
-          variant="secondary"
-          disabled={loading}
-          onClick={() => onSignUp(email, password)}
-        >
-          Sign up
-        </Button>
+        <div className="text-center text-sm">
+          <button
+            type="button"
+            className="text-primary hover:underline"
+            onClick={() => setIsSignUp(!isSignUp)}
+          >
+            {isSignUp
+              ? "Already have an account? Sign in"
+              : "Don't have an account? Sign up"}
+          </button>
+        </div>
       </div>
     </form>
   );
