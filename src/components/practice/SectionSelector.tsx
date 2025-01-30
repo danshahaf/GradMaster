@@ -5,21 +5,21 @@ import { Card } from "@/components/ui/card";
 const GRE_SECTIONS = [
   { 
     id: 'quantitative', 
-    name: 'Quantitative Reasoning',
+    name: 'Quantitative',
     icon: Calculator,
-    description: 'Practice math problems and data interpretation'
+    description: 'Math problems and data interpretation'
   },
   { 
     id: 'verbal', 
-    name: 'Verbal Reasoning',
+    name: 'Verbal',
     icon: BookText,
-    description: 'Enhance your vocabulary and reading comprehension'
+    description: 'Vocabulary and reading comprehension'
   },
   { 
     id: 'integrated', 
-    name: 'Integrated Reasoning',
+    name: 'Integrated',
     icon: LineChart,
-    description: 'Combine quantitative and verbal skills'
+    description: 'Combined quantitative and verbal skills'
   },
 ];
 
@@ -42,12 +42,12 @@ const SectionSelector = ({ onSelectSection, loading }: SectionSelectorProps) => 
             <Button
               variant="ghost"
               disabled={loading}
-              className="w-full h-full aspect-square flex flex-col items-center justify-center gap-4 hover:bg-transparent"
+              className="w-full h-full flex flex-col items-center justify-center gap-4 hover:bg-transparent min-h-[200px]"
             >
               <section.icon className="h-16 w-16 text-primary" />
-              <div className="text-center">
-                <h3 className="font-semibold mb-2">{section.name}</h3>
-                <p className="text-sm text-muted-foreground">{section.description}</p>
+              <div className="text-center w-full px-2">
+                <h3 className="font-semibold mb-2 text-base truncate">{section.name}</h3>
+                <p className="text-sm text-muted-foreground line-clamp-2">{section.description}</p>
               </div>
             </Button>
           </Card>

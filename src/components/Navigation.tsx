@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
+import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
 const Navigation = () => {
   return (
-    <NavigationMenu className="max-w-full w-full justify-start bg-background border-b mb-6">
+    <NavigationMenu className="max-w-full w-full justify-start bg-accent mb-6 border-b border-accent">
       <NavigationMenuList className="px-4 py-2">
         <NavigationMenuItem>
           <Link to="/" className={cn(
-            "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+            "group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
           )}>
             Home
           </Link>
@@ -16,19 +16,19 @@ const Navigation = () => {
 
         <NavigationMenuItem>
           <Link to="/practice" className={cn(
-            "group inline-flex h-10 w-max items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+            "group inline-flex h-10 w-max items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium transition-colors hover:bg-primary/90 hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
           )}>
             Practice
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="hover:bg-primary hover:text-primary-foreground">Resources</NavigationMenuTrigger>
           <NavigationMenuContent>
             <div className="w-[200px] p-2">
-              <Link to="#" className="block p-2 hover:bg-accent rounded-md">Study Materials</Link>
-              <Link to="#" className="block p-2 hover:bg-accent rounded-md">Progress Tracking</Link>
-              <Link to="#" className="block p-2 hover:bg-accent rounded-md">Tips & Strategies</Link>
+              <Link to="#" className="block p-2 hover:bg-primary hover:text-primary-foreground rounded-md">Study Materials</Link>
+              <Link to="#" className="block p-2 hover:bg-primary hover:text-primary-foreground rounded-md">Progress Tracking</Link>
+              <Link to="#" className="block p-2 hover:bg-primary hover:text-primary-foreground rounded-md">Tips & Strategies</Link>
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
