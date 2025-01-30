@@ -24,7 +24,7 @@ const Index = () => {
           </p>
           <div className="space-x-4">
             <Button
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/login")}
               className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg"
             >
               Start Free Trial
