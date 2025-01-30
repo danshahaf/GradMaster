@@ -42,7 +42,7 @@ const SectionSelector = ({ onSelectSection, loading }: SectionSelectorProps) => 
             <Button
               variant="ghost"
               disabled={loading}
-              className="w-full h-full flex flex-col items-center justify-center gap-4 hover:bg-muted min-h-[200px]"
+              className="w-full h-full flex flex-col items-center justify-center gap-4 hover:bg-muted hover:text-foreground min-h-[200px]"
             >
               <section.icon className="h-16 w-16 text-primary" />
               <div className="text-center w-full px-2">
