@@ -33,7 +33,7 @@ const StudyMaterials = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 mt-16 min-h-[calc(100vh-4rem)] flex items-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {studyCards.map((card) => (
             <StudyCard
