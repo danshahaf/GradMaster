@@ -12,9 +12,9 @@ interface StudyCardProps {
 const StudyCard = ({ to, icon: Icon, title, description }: StudyCardProps) => {
   return (
     <Link to={to}>
-      <Card className="p-6 hover:shadow-lg transition-shadow duration-200">
-        <div className="flex items-center gap-4">
-          <div className="p-3 bg-primary/10 rounded-full">
+      <Card className="p-6 h-[160px] hover:shadow-lg transition-shadow duration-200">
+        <div className="flex items-center gap-4 h-full">
+          <div className="p-3 bg-primary/10 rounded-full h-fit">
             <Icon className="h-8 w-8 text-primary" />
           </div>
           <div>
