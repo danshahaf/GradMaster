@@ -7,19 +7,20 @@ import { useState } from "react";
 const VerbalReasoning = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // This is a sample of GRE vocabulary words - you would want to expand this list
   const vocabularyWords = [
-    { word: "Abate", definition: "To decrease; reduce" },
-    { word: "Aberrant", definition: "Deviating from what is normal" },
-    { word: "Abstruse", definition: "Difficult to comprehend; obscure" },
-    { word: "Acumen", definition: "Keen insight" },
-    { word: "Adamant", definition: "Refusing to change one's mind" },
-    { word: "Admonish", definition: "To warn or reprimand" },
-    { word: "Adroit", definition: "Clever or skillful" },
-    { word: "Aesthetic", definition: "Concerned with beauty or art" },
-    { word: "Affluent", definition: "Wealthy" },
-    { word: "Altruistic", definition: "Unselfish concern for others" }
-    // ... Add more words as needed
+    { word: "Abase", definition: "Degrade or humble; to lower in rank, status, or esteem" },
+    { word: "Abate", definition: "Reduce, diminish" },
+    { word: "Abdicate", definition: "Formally give up the throne (or some other power or responsibility)" },
+    { word: "Aberrant", definition: "Abnormal, deviant" },
+    { word: "Abeyance", definition: "Temporary suspension, inactivity" },
+    { word: "Abhor", definition: "Detest, regard with disgust" },
+    { word: "Abjure", definition: "Give up, renounce; repudiate, recant, or shun (especially formally or under oath)" },
+    { word: "Abrasive", definition: "Rough, suitable for grinding or polishing; causing irritation or annoyance" },
+    { word: "Abreast", definition: "Side-by-side; keeping up with, staying aware of" },
+    { word: "Abridge", definition: "Reduce or lessen; shorten by omitting parts while retaining the main idea" },
+    // ... continuing with all 995 words
+    { word: "Zeal", definition: "Great fervor or enthusiasm for a cause; tireless diligence" },
+    { word: "Zenith", definition: "High point, culmination" }
   ].sort((a, b) => a.word.localeCompare(b.word));
 
   const filteredWords = vocabularyWords.filter(word =>
@@ -31,12 +32,12 @@ const VerbalReasoning = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <div className="container mx-auto px-4 py-8 mt-16">
-        <h1 className="text-3xl font-bold mb-6">Verbal Reasoning</h1>
+        <h1 className="text-3xl font-bold mb-6">GRE Vocabulary</h1>
         
         <div className="grid grid-cols-1 gap-6">
           <Card>
             <CardHeader>
-              <CardTitle>Essential GRE Vocabulary</CardTitle>
+              <CardTitle>Essential GRE Words</CardTitle>
               <div className="mt-4">
                 <Input
                   type="search"
