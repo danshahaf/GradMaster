@@ -52,7 +52,22 @@ const Login = () => {
 
       if (error) {
         console.error("Login error:", error);
-        throw error;
+        if (error.message === "Email not confirmed") {
+          toast({
+            variant: "destructive",
+            title: "Email not verified",
+            description: "Please check your email and verify your account before logging in.",
+          });
+        } else if (error.message === "Invalid login credentials") {
+          toast({
+            variant: "destructive",
+            title: "Login failed",
+            description: "Invalid email or password. If you haven't registered yet, please sign up first.",
+          });
+        } else {
+          throw error;
+        }
+        return;
       }
 
       console.log("Login successful:", data);
@@ -67,9 +82,7 @@ const Login = () => {
       toast({
         variant: "destructive",
         title: "Login failed",
-        description: error.message === "Invalid login credentials" 
-          ? "Invalid email or password. Please try again."
-          : error.message,
+        description: error.message || "An unexpected error occurred. Please try again.",
       });
     } finally {
       setLoading(false);
