@@ -99,7 +99,7 @@ const QuantitativeReasoning = () => {
                         {section.items.map((item) => (
                           <Card key={item.name} className="p-3 hover:shadow-md transition-shadow">
                             <h4 className="font-medium text-foreground mb-2 text-sm">{item.name}</h4>
-                            <div className="bg-muted p-2 rounded-md flex items-center justify-center min-h-[50px]">
+                            <div className="bg-background/50 dark:bg-secondary p-2 rounded-md flex items-center justify-center min-h-[50px]">
                               <BlockMath math={item.formula} />
                             </div>
                           </Card>
