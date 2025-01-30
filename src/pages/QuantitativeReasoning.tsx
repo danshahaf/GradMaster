@@ -95,11 +95,11 @@ const QuantitativeReasoning = () => {
                   {formulas.map((section) => (
                     <div key={section.category} className="mb-8">
                       <h3 className="text-xl font-semibold mb-4 text-primary">{section.category}</h3>
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                         {section.items.map((item) => (
-                          <Card key={item.name} className="p-4 hover:shadow-md transition-shadow">
-                            <h4 className="font-medium text-secondary-foreground mb-2">{item.name}</h4>
-                            <div className="bg-accent/10 p-3 rounded-md flex items-center justify-center min-h-[60px]">
+                          <Card key={item.name} className="p-3 hover:shadow-md transition-shadow">
+                            <h4 className="font-medium text-foreground mb-2 text-sm">{item.name}</h4>
+                            <div className="bg-muted p-2 rounded-md flex items-center justify-center min-h-[50px]">
                               <BlockMath math={item.formula} />
                             </div>
                           </Card>
