@@ -32,16 +32,30 @@ const Login = () => {
   }, [navigate]);
 
   const handleEmailLogin = async (email: string, password: string) => {
+    if (!email || !password) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Please enter both email and password",
+      });
+      return;
+    }
+
     setLoading(true);
     
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      console.log("Attempting email login for:", email);
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error("Login error:", error);
+        throw error;
+      }
 
+      console.log("Login successful:", data);
       toast({
         title: "Welcome back!",
         description: "Successfully logged in.",
@@ -49,10 +63,13 @@ const Login = () => {
       
       navigate("/dashboard");
     } catch (error: any) {
+      console.error("Login error details:", error);
       toast({
         variant: "destructive",
-        title: "Error",
-        description: error.message,
+        title: "Login failed",
+        description: error.message === "Invalid login credentials" 
+          ? "Invalid email or password. Please try again."
+          : error.message,
       });
     } finally {
       setLoading(false);
@@ -87,9 +104,28 @@ const Login = () => {
   };
 
   const handleSignUp = async (email: string, password: string) => {
+    if (!email || !password) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Please enter both email and password",
+      });
+      return;
+    }
+
+    if (password.length < 6) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Password must be at least 6 characters long",
+      });
+      return;
+    }
+
     setLoading(true);
     
     try {
+      console.log("Attempting signup for:", email);
       const { error } = await supabase.auth.signUp({
         email,
         password,
@@ -105,6 +141,7 @@ const Login = () => {
         description: "We've sent you a verification link.",
       });
     } catch (error: any) {
+      console.error("Signup error:", error);
       toast({
         variant: "destructive",
         title: "Error",
