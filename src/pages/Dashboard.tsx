@@ -141,8 +141,6 @@ const Dashboard = () => {
           />
         </div>
 
-        <div className="my-12 border-t border-border" />
-
         <QuestionTypeStats stats={Object.values(questionTypeStats)} />
         
         <PerformanceChart data={chartData} colors={lineColors} />
