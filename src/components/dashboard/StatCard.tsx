@@ -8,7 +8,7 @@ interface StatCardProps {
   subtitle?: string;
 }
 
-const StatCard = ({ icon: Icon, title, value, subtitle }: StatCardProps) => {
+export const StatCard = ({ icon: Icon, title, value, subtitle }: StatCardProps) => {
   return (
     <Card className="p-6 hover:shadow-lg transition-shadow duration-200">
       <div className="flex items-center gap-4">
@@ -26,5 +26,3 @@ const StatCard = ({ icon: Icon, title, value, subtitle }: StatCardProps) => {
     </Card>
   );
 };
-
-export default StatCard;

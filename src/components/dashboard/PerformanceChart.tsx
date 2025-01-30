@@ -15,7 +15,7 @@ interface PerformanceChartProps {
   colors: Record<string, string>;
 }
 
-const PerformanceChart = ({ data, colors }: PerformanceChartProps) => {
+export const PerformanceChart = ({ data, colors }: PerformanceChartProps) => {
   return (
     <Card className="p-6 hover:shadow-lg transition-shadow duration-200">
       <div className="flex items-center justify-between mb-6">
@@ -66,5 +66,3 @@ const PerformanceChart = ({ data, colors }: PerformanceChartProps) => {
     </Card>
   );
 };
-
-export default PerformanceChart;

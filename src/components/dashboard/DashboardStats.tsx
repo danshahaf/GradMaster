@@ -1,4 +1,4 @@
-import { StatCard } from "@/components/dashboard/StatCard";
+import { StatCard } from "./StatCard";
 import { Brain, CheckCircle, Clock } from "lucide-react";
 
 interface DashboardStatsProps {
@@ -17,19 +17,19 @@ export const DashboardStats = ({ totalQuestions, correctAnswers, averageTime }: 
       <StatCard
         title="Total Questions"
         value={totalQuestions.toString()}
-        description="Questions attempted"
+        subtitle="Questions attempted"
         icon={Brain}
       />
       <StatCard
         title="Accuracy"
         value={`${accuracy}%`}
-        description="Correct answers"
+        subtitle="Correct answers"
         icon={CheckCircle}
       />
       <StatCard
         title="Average Time"
         value={`${averageTime}s`}
-        description="Per question"
+        subtitle="Per question"
         icon={Clock}
       />
     </div>
