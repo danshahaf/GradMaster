@@ -87,57 +87,84 @@ const Dashboard = () => {
     }));
 
   return (
-    <div>
+    <div className="min-h-screen bg-background">
       <Navigation />
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8">Dashboard</h1>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="p-6">
+          <Card className="p-6 hover:shadow-lg transition-shadow duration-200">
             <div className="flex items-center gap-4">
-              <BookOpen className="h-8 w-8 text-primary" />
+              <div className="p-3 bg-primary/10 rounded-full">
+                <BookOpen className="h-8 w-8 text-primary" />
+              </div>
               <div>
-                <p className="text-sm text-muted-foreground">Total Questions</p>
-                <h2 className="text-2xl font-bold">{totalQuestions}</h2>
+                <p className="text-sm text-muted-foreground font-medium">Questions Attempted</p>
+                <h2 className="text-3xl font-bold text-foreground">{totalQuestions}</h2>
               </div>
             </div>
           </Card>
 
-          <Card className="p-6">
+          <Card className="p-6 hover:shadow-lg transition-shadow duration-200">
             <div className="flex items-center gap-4">
-              <Brain className="h-8 w-8 text-primary" />
+              <div className="p-3 bg-primary/10 rounded-full">
+                <Brain className="h-8 w-8 text-primary" />
+              </div>
               <div>
-                <p className="text-sm text-muted-foreground">Correct Answers</p>
-                <h2 className="text-2xl font-bold">{totalCorrect}</h2>
+                <p className="text-sm text-muted-foreground font-medium">Correct Answers</p>
+                <h2 className="text-3xl font-bold text-foreground">{totalCorrect}</h2>
               </div>
             </div>
           </Card>
 
-          <Card className="p-6">
+          <Card className="p-6 hover:shadow-lg transition-shadow duration-200">
             <div className="flex items-center gap-4">
-              <Trophy className="h-8 w-8 text-primary" />
+              <div className="p-3 bg-primary/10 rounded-full">
+                <Trophy className="h-8 w-8 text-primary" />
+              </div>
               <div>
-                <p className="text-sm text-muted-foreground">Average Score</p>
-                <h2 className="text-2xl font-bold">{averageScore}%</h2>
+                <p className="text-sm text-muted-foreground font-medium">Success Rate</p>
+                <h2 className="text-3xl font-bold text-foreground">{averageScore}%</h2>
               </div>
             </div>
           </Card>
         </div>
 
-        <Card className="p-6 mb-8">
-          <h2 className="text-2xl font-bold mb-4">Progress Over Time</h2>
+        <Card className="p-6 hover:shadow-lg transition-shadow duration-200">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-semibold text-foreground">Performance History</h2>
+            <div className="px-3 py-1 bg-primary/10 rounded-full">
+              <span className="text-sm font-medium text-primary">Last {chartData.length} sessions</span>
+            </div>
+          </div>
           <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" />
-                <YAxis domain={[0, 100]} />
-                <Tooltip />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis 
+                  dataKey="date" 
+                  stroke="#6b7280"
+                  fontSize={12}
+                />
+                <YAxis 
+                  domain={[0, 100]} 
+                  stroke="#6b7280"
+                  fontSize={12}
+                  tickFormatter={(value) => `${value}%`}
+                />
+                <Tooltip 
+                  contentStyle={{ 
+                    backgroundColor: 'white',
+                    border: '1px solid #e5e7eb',
+                    borderRadius: '6px',
+                    padding: '8px'
+                  }}
+                />
                 <Line
                   type="monotone"
                   dataKey="score"
-                  stroke="#2563eb"
+                  stroke="#34D399"
                   strokeWidth={2}
+                  dot={{ fill: '#34D399', strokeWidth: 2 }}
+                  activeDot={{ r: 6, fill: '#34D399' }}
                 />
               </LineChart>
             </ResponsiveContainer>
