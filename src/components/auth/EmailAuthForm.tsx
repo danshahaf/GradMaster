@@ -13,13 +13,44 @@ export const EmailAuthForm = ({ onSubmit, onSignUp, loading }: EmailAuthFormProp
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const [validationError, setValidationError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateForm = () => {
+    if (!email || !password) {
+      setValidationError("Please enter both email and password");
+      return false;
+    }
+
+    if (!email.includes("@")) {
+      setValidationError("Please enter a valid email address");
+      return false;
+    }
+
+    if (isSignUp && password.length < 6) {
+      setValidationError("Password must be at least 6 characters long");
+      return false;
+    }
+
+    setValidationError("");
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSignUp) {
-      onSignUp(email, password);
-    } else {
-      onSubmit(email, password);
+    console.log(`Attempting to ${isSignUp ? 'sign up' : 'sign in'} with email:`, email);
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    try {
+      if (isSignUp) {
+        await onSignUp(email, password);
+      } else {
+        await onSubmit(email, password);
+      }
+    } catch (error) {
+      console.error(`${isSignUp ? 'Signup' : 'Login'} error:`, error);
     }
   };
 
@@ -35,7 +66,10 @@ export const EmailAuthForm = ({ onSubmit, onSignUp, loading }: EmailAuthFormProp
             autoComplete="email"
             required
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setValidationError("");
+            }}
             className="mt-1"
             placeholder="you@example.com"
           />
@@ -49,12 +83,24 @@ export const EmailAuthForm = ({ onSubmit, onSignUp, loading }: EmailAuthFormProp
             autoComplete={isSignUp ? "new-password" : "current-password"}
             required
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setValidationError("");
+            }}
             className="mt-1"
             placeholder="••••••••"
           />
+          {isSignUp && (
+            <p className="text-sm text-muted-foreground mt-1">
+              Password must be at least 6 characters long
+            </p>
+          )}
         </div>
       </div>
+
+      {validationError && (
+        <div className="text-sm text-destructive">{validationError}</div>
+      )}
 
       <div className="flex flex-col gap-4">
         <Button type="submit" className="w-full" disabled={loading}>
@@ -64,7 +110,10 @@ export const EmailAuthForm = ({ onSubmit, onSignUp, loading }: EmailAuthFormProp
           <button
             type="button"
             className="text-primary hover:underline"
-            onClick={() => setIsSignUp(!isSignUp)}
+            onClick={() => {
+              setIsSignUp(!isSignUp);
+              setValidationError("");
+            }}
           >
             {isSignUp
               ? "Already have an account? Sign in"
