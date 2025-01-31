@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import StudyMaterials from "./pages/StudyMaterials";
 import QuantitativeReasoning from "./pages/QuantitativeReasoning";
+import VerbalReasoning from "./pages/VerbalReasoning";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
                 <Route path="/practice" element={<Practice />} />
                 <Route path="/study-materials" element={<StudyMaterials />} />
                 <Route path="/study-materials/quantitative" element={<QuantitativeReasoning />} />
+                <Route path="/study-materials/verbal" element={<VerbalReasoning />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </AnimatePresence>
