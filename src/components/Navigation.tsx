@@ -5,7 +5,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const Navigation = () => {
   return (
-    <NavigationMenu className="max-w-full w-full justify-start bg-background border-b mb-6 fixed top-0 left-0 right-0 z-50">
+    <NavigationMenu className="max-w-full w-full justify-start bg-background/95 backdrop-blur-sm border-b fixed top-0 left-0 right-0 z-50">
       <NavigationMenuList className="px-4 py-2 w-full flex items-center">
         <NavigationMenuItem>
           <Link to="/practice" className={cn(
