@@ -14,6 +14,8 @@ import Login from "./pages/Login";
 import StudyMaterials from "./pages/StudyMaterials";
 import QuantitativeReasoning from "./pages/QuantitativeReasoning";
 import VerbalReasoning from "./pages/VerbalReasoning";
+import TipsStrategies from "./pages/TipsStrategies";
+import AnalyticWritingTips from "./pages/AnalyticWritingTips";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +36,8 @@ const App = () => (
                 <Route path="/study-materials" element={<StudyMaterials />} />
                 <Route path="/study-materials/quantitative" element={<QuantitativeReasoning />} />
                 <Route path="/study-materials/verbal" element={<VerbalReasoning />} />
+                <Route path="/study-materials/tips" element={<TipsStrategies />} />
+                <Route path="/study-materials/analytical" element={<AnalyticWritingTips />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </AnimatePresence>
