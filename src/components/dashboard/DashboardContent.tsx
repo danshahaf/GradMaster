@@ -53,7 +53,7 @@ export const DashboardContent = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4">
       <DashboardStats
         totalQuestions={totalQuestions}
         correctAnswers={totalCorrect}

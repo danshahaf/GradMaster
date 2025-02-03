@@ -16,6 +16,11 @@ import QuantitativeReasoning from "./pages/QuantitativeReasoning";
 import VerbalReasoning from "./pages/VerbalReasoning";
 import TipsStrategies from "./pages/TipsStrategies";
 import AnalyticWritingTips from "./pages/AnalyticWritingTips";
+import VerbalReasoningPractice from "./pages/VerbalReasoningPractice";
+import QuantitativePractice from "./pages/QuantitativePractice";
+import VocabPractice from "./pages/VocabPractice";
+import IntegratedPractice from "./pages/IntegratedPractice";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +43,11 @@ const App = () => (
                 <Route path="/study-materials/verbal" element={<VerbalReasoning />} />
                 <Route path="/study-materials/tips" element={<TipsStrategies />} />
                 <Route path="/study-materials/analytical" element={<AnalyticWritingTips />} />
+                <Route path="/practice/verbal-reasoning" element={<VerbalReasoningPractice />} />
+                <Route path="/practice/quantitative" element={<QuantitativePractice />} />
+                <Route path="/practice/vocabulary" element={<VocabPractice />} />
+                <Route path="/practice/integrated" element={<IntegratedPractice />} />
+                <Route path="/settings" element={<Settings />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </AnimatePresence>
